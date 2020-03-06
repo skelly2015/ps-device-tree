@@ -1,0 +1,27 @@
+{
+  "name": "ps-device-tree",
+  "version": "1.0.1",
+  "description": "device tree for baowu",
+  "main": "dist/ps-tree.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skelly2015/ps-device-tree.git"
+  },
+  "keywords": [
+    "tree"
+  ],
+  "author": "skelly2015",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skelly2015/ps-device-tree/issues"
+  },
+  "homepage": "https://github.com/skelly2015/ps-device-tree",
+  "dependencies": {},
+  "devDependencies": {
+    "angular": "^1.7.1",
+    "npm": "^6.1.0"
+  }
+}
