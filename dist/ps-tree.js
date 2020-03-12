@@ -738,25 +738,27 @@
     })
   }
 
-  function showTotal() {
-    this.each(function(n) {
-      n.show = true;
-    });
-    this.update();
+  function showTotal(callback) {
+    this.search(callback, true);
+    // this.each(function(n) {
+    //   n.show = true;
+    // });
+    // this.update();
   }
 
-  function showControlled() {
-    this.each(function(n) {
-      if (n.controlled == 1 || n.domainControlled == 1) {
-        n.show = true;
-      } else {
-        n.show = false;
-      }
-    });
-    this.update();
+  function showControlled(callback) {
+    this.search(callback, false);
+    // this.each(function(n) {
+    //   if (n.controlled == 1 || n.domainControlled == 1) {
+    //     n.show = true;
+    //   } else {
+    //     n.show = false;
+    //   }
+    // });
+    // this.update();
   }
 
-  function search(callback){
+  function search(callback, showTotal){
     this.each(function(n){
       n.show = false;
       delete n.searched;
@@ -769,8 +771,19 @@
       if(n.show !== true ){
         while(find && parent){
           if(find){
-            parent.show = true;
-            parent.open = true;
+            if (showTotal) {
+              parent.show = true;
+              if (callback != "") {
+                parent.open = true;
+              }
+            } else {
+              if (parent.controlled == 1 || parent.domainControlled == 1) {
+                parent.show = true;
+                if (callback != "") {
+                  parent.open = true;
+                }
+              }
+            }
           } else {
             parent.open = false;
           }
