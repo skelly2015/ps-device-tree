@@ -758,14 +758,31 @@
     // this.update();
   }
 
-  function search(callback, showTotal){
+  function search(callback, showTotal) {
     this.each(function(n){
       n.show = false;
       delete n.searched;
     });
     this.each(bind(this, function(n){
       var searchFn = isFunction(callback) ? callback : function(n){
-        return n.label.indexOf(callback) != -1;
+        if (showTotal) {
+          if (n.label.indexOf(callback) != -1) {
+            return true;
+          } else {
+            return false;
+          }
+        } else {
+          if (n.controlled == 1 || n.domainControlled == 1) {
+            if (n.label.indexOf(callback) != -1) {
+              return true;
+            } else {
+              return false;
+            }
+          } else {
+            return false;
+          }
+        }
+        // return n.label.indexOf(callback) != -1;
       }, parent = n, find = searchFn(n);
       find && callback != "" && (n.searched = find);
       if(n.show !== true ){
