@@ -1,6 +1,6 @@
 {
   "name": "ps-device-tree",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "device tree for baowu",
   "main": "dist/ps-tree.js",
   "scripts": {

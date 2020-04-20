@@ -766,10 +766,19 @@
     this.each(bind(this, function(n){
       var searchFn = isFunction(callback) ? callback : function(n){
         if (showTotal) {
-          if (n.label.indexOf(callback) != -1) {
-            return true;
+          // 域需要判断auth属性
+          if (n.modelId == 300 || n.modelId == 301 || n.modelId == 302) {
+            if (n.auth == 1 && n.label.indexOf(callback) != -1) {
+              return true;
+            } else {
+              return false;
+            }
           } else {
-            return false;
+            if (n.label.indexOf(callback) != -1) {
+              return true;
+            } else {
+              return false;
+            }
           }
         } else {
           if (n.controlled == 1 || n.domainControlled == 1) {
