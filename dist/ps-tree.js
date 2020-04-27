@@ -215,6 +215,9 @@
       this.text.innerText = this.label;
     }
     function createIcon(icon, cls){
+      if(icon == "no"){
+        return "";
+      }
       icon = icon || "";
       cls = " " + cls || ""
       var span = createElement("span", icon + cls);
